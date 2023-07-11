@@ -5,6 +5,7 @@ import ExpensesFilter from "./ExpensesFilter";
 import { useState } from "react";
 
 export default function Expenses(props) {
+  console.log(props);
   const [filterDate, setFilterDate] =  useState('');
 const onSelectHandler = (data) => {
   console.log(data);
@@ -13,24 +14,11 @@ console.log(filterDate);
 }
     return (<Card className="expenses">
       <ExpensesFilter selected={filterDate} onSelect={onSelectHandler}/>
-        <ExpenseItem
-        title={props.expenses[0].title}
-        date={props.expenses[0].date}
-        amount={props.expenses[0].amount}
-      ></ExpenseItem>
-      <ExpenseItem
-        title={props.expenses[1].title}
-        date={props.expenses[1].date}
-        amount={props.expenses[1].amount}
-      ></ExpenseItem>
-      <ExpenseItem
-        title={props.expenses[2].title}
-        date={props.expenses[2].date}
-        amount={props.expenses[2].amount}
-      ></ExpenseItem>
-      <ExpenseItem
-        title={props.expenses[3].title}
-        date={props.expenses[3].date}
-        amount={props.expenses[3].amount}
-      ></ExpenseItem></Card> );
+      {props.expenses.map((expense) => <ExpenseItem
+      key={expense.id}
+        title={expense.title}
+        date={expense.date}
+        amount={expense.amount}
+      ></ExpenseItem>)}
+     </Card> );
 }
