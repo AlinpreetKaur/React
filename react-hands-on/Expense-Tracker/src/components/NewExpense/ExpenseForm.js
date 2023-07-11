@@ -5,6 +5,7 @@ import './ExpenseForm.css';
     const [enteredTitle, setEnteredTitle] = useState('');
     const [enteredAmount, setEnteredAmount] = useState('');
     const [enteredDate, setEnteredDate] = useState('');
+    
 
     const titleChangeHandler = (event) => {
         setEnteredTitle(event.target.value);
@@ -36,6 +37,11 @@ setEnteredTitle('');
 setEnteredDate('');
 props.onSaveExpensData(expenseData);
     }
+
+    const cancelHandler = (e) => {
+        e.preventDefault();
+        props.onCancel();
+    }
     return <form onSubmit={submitHandler}>
         <div className="new-expense__controls">
             <div className="new-expense__control">
@@ -52,7 +58,8 @@ props.onSaveExpensData(expenseData);
             </div>
         </div>
         <div className="new-expense__actions">
-            <button type="submit">Add Expense</button>
+            <button type="button" onClick={cancelHandler}>Cancel</button>
+             <button type="submit">Add Expense</button>
         </div>
     </form>
 }
