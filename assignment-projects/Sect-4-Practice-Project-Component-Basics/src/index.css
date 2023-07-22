@@ -58,7 +58,6 @@ header p {
   width: 33%;
   transition: all 0.2s
 }
-
 .concept:hover {
   transform: translateY(-2px);
   transition: transform 0.2s;
